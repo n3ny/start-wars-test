@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import './index.css';
 import FilmsList from './modules/films/films-list/FilmsList';
@@ -14,6 +15,6 @@ ReactDOM.render(
       <AppRoute path={'/'} component={FilmsList}/>
     </Switch>
     </BrowserRouter>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
