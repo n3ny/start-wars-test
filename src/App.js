@@ -1,10 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
+import './App.css';
+import Layout from './layouts';
+
+const AppRoute = ({component: Component, rest}) => {
+  return <Route 
+  {...rest}
+  render={(routeProps) => <Layout>
+    <Component {...routeProps}></Component>
+  </Layout>}/>;
+}
+
+/* ({ component: Component, rest }) => {
+  return <Route
+    {...rest}
+    render={() => <FullLayout>
+      <Component></Component>
+    </FullLayout>} />;
+}; */
+
+/* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,8 +35,4 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
-  );
-}
-
-export default App;
+    </div> */
