@@ -20,6 +20,10 @@ const validateMessages = {
     },
 };
 
+const requiredRule =  {
+    required: true,
+}
+
 const SpaceshipForm = (props) => {
     const [spaceship, setData] = useState({});
     const [form] = Form.useForm();
@@ -44,55 +48,35 @@ const SpaceshipForm = (props) => {
             <Form.Item
                 name={['data', 'name']}
                 label="Name"
-                rules={[
-                    {
-                        required: true,
-                    },
-                ]}
+                rules={[requiredRule]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name={['data', 'model']}
                 label="Model"
-                rules={[
-                    {
-                        required: true,
-                    },
-                ]}
+                rules={[requiredRule]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
-                name={['data', 'name']}
-                label="Name"
-                rules={[
-                    {
-                        required: true,
-                    },
-                ]}
+                name={['data', 'cost_in_credits']}
+                label="Credits"
+                rules={[requiredRule]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name={['data', 'max_atmosphering_speed']}
                 label="Speed"
-                rules={[
-                    {
-                        required: true,
-                    },
-                ]}
+                rules={[requiredRule]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name={['data', 'cargo_capacity']}
                 label="Cargo capacity"
-                rules={[
-                    {
-                        required: true,
-                    },
-                ]}
+                rules={[requiredRule]}
             >
                 <Input />
             </Form.Item>
