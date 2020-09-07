@@ -16,9 +16,18 @@ const SpaceshipsList = (props) => {
     const fetchStarship = async () => {
         var naves = [];
 
-        
+        const temp = [
+            "https://swapi.dev/api/starships/2/",
+            "https://swapi.dev/api/starships/3/",
+            "https://swapi.dev/api/starships/5/",
+            "https://swapi.dev/api/starships/9/",
+            "https://swapi.dev/api/starships/10/",
+            "https://swapi.dev/api/starships/11/",
+            "https://swapi.dev/api/starships/12/",
+            "https://swapi.dev/api/starships/13/"
+        ]
 
-        list.forEach(async element => {
+        temp.forEach(async element => {
             const response = await fetch(element);
             const starship = await response.json();
 
