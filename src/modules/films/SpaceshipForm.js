@@ -22,14 +22,15 @@ const validateMessages = {
 
 const SpaceshipForm = (props) => {
     const [data, setData] = useState({});
-    const { getFieldDecorator } = props.form;
+    const [form] = Form.useForm();
 
     useEffect(() => {
+
         const { data } = props.location.state;
         setData(data);
 
-        props.form.setFieldsValue({
-            ...data
+        form.setFieldsValue({
+            data: {...data}
         })
         console.log('data', data, props)
 
@@ -40,8 +41,7 @@ const SpaceshipForm = (props) => {
     };
 
     return (
-        <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}
-            initialValues={{ data: { ...data } }}>
+        <Form form={form} {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
             <Form.Item
                 name={['data', 'name']}
                 label="Name"
@@ -54,35 +54,50 @@ const SpaceshipForm = (props) => {
                 <Input />
             </Form.Item>
             <Form.Item
-                name={['data', 'email']}
-                label="Email"
+                name={['data', 'model']}
+                label="Model"
                 rules={[
                     {
-                        type: 'email',
+                        required: true,
                     },
                 ]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
-                name={['data', 'age']}
-                label="Age"
+                name={['data', 'name']}
+                label="Name"
                 rules={[
                     {
-                        type: 'number',
-                        min: 0,
-                        max: 99,
+                        required: true,
                     },
                 ]}
             >
-                <InputNumber />
-            </Form.Item>
-            <Form.Item name={['data', 'website']} label="Website">
                 <Input />
             </Form.Item>
-            <Form.Item name={['data', 'introduction']} label="Introduction">
-                <Input.TextArea />
+            <Form.Item
+                name={['data', 'max_atmosphering_speed']}
+                label="Speed"
+                rules={[
+                    {
+                        required: true,
+                    },
+                ]}
+            >
+                <Input />
             </Form.Item>
+            <Form.Item
+                name={['data', 'cargo_capacity']}
+                label="Cargo capacity"
+                rules={[
+                    {
+                        required: true,
+                    },
+                ]}
+            >
+                <Input />
+            </Form.Item>
+            
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                 <Button type="primary" htmlType="submit">
                     Submit
@@ -92,4 +107,4 @@ const SpaceshipForm = (props) => {
     )
 }
 
-export default Form.create()(SpaceshipForm);
+export default SpaceshipForm;
