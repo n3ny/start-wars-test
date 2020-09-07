@@ -16,6 +16,8 @@ const SpaceshipsList = (props) => {
     const fetchStarship = async () => {
         var naves = [];
 
+        
+
         list.forEach(async element => {
             const response = await fetch(element);
             const starship = await response.json();

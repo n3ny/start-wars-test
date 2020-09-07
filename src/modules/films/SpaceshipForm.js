@@ -21,7 +21,7 @@ const validateMessages = {
 };
 
 const SpaceshipForm = (props) => {
-    const [data, setData] = useState({});
+    const [spaceship, setData] = useState({});
     const [form] = Form.useForm();
 
     useEffect(() => {
@@ -32,9 +32,8 @@ const SpaceshipForm = (props) => {
         form.setFieldsValue({
             data: {...data}
         })
-        console.log('data', data, props)
 
-    }, [data])
+    }, [spaceship])
 
     const onFinish = values => {
         console.log(values);
