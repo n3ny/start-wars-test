@@ -2,22 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
-import reducers from './redux/reducers'
+import generateStore from './redux/store';
 
 import './index.css';
 import FilmsList from './modules/films/films-list/FilmsList';
-import AppRoute from './layouts';
+import AppRoute from './App';
+import SpaceshipsList from './modules/films/SpaceshipsList';
+import SpaceshipForm from './modules/films/SpaceshipForm';
 
-const store = createStore(reducers)
+const store = generateStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-    <Switch>
-      <AppRoute path={'/films-list'} component={FilmsList}/>
-      <AppRoute path={'/'} component={FilmsList}/>
-    </Switch>
+      <Switch>
+        <AppRoute path={'/naves'} component={SpaceshipsList} />
+        <AppRoute path="/upsert" component={SpaceshipForm} /> 
+        <AppRoute path={'/'} component={FilmsList} />
+      </Switch>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

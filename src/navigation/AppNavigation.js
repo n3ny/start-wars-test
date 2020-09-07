@@ -1,11 +1,13 @@
 import React from 'react'; 
 import { Switch, Route } from 'react-router-dom';
 
-import FilmsList from '../modules/films/films-list/FilmsList';
+import SpaceshipsList from '../modules/films/SpaceshipsList';
+import SpaceshipForm from '../modules/films/SpaceshipForm';
 
 const AppNavigation = (props) => (
     <Switch>
-        <Route path="/films-list" component={FilmsList} />
+        <Route path="/naves" component={SpaceshipsList} />        
+        <Route path="/upsert" component={SpaceshipForm} />        
     </Switch>
 );
 export default AppNavigation;

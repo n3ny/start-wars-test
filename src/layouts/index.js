@@ -5,7 +5,8 @@ import SideMenu from './SideMenu';
 
 const { Header, Content } = Layout;
 
-const AppRoute = ({children}) => (
+const AppRoute = ({children}) => {
+  return (
   <Layout>
     <Header className="header">
       <div className="logo" />
@@ -36,6 +37,6 @@ const AppRoute = ({children}) => (
       </Layout>
     </Layout>
   </Layout>
-);
+)};
 
 export default AppRoute;

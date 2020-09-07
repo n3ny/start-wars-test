@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 export const GET_FILMS_START = 'GET_FILMS_START';
 export const GET_FILMS_SUCCESS = 'GET_FILMS_SUCCESS';
@@ -10,10 +11,17 @@ export const startGetFilms = payload => ({
     ...payload
 }) 
 
-export const successGetFilms = payload => ({
-    type: GET_FILMS_SUCCESS,
-    ...payload
-})  
+export const getFilms = () => async (dispatch, getState) => {
+    try {
+        const response = await axios.get('https://swapi.dev/api/films/');
+        dispatch({
+            type: GET_FILMS_SUCCESS,
+            payload: response.data.results
+        })  
+    } catch (error) {
+        console.log(error) //TODO: mandar un mensaje de error
+    }
+} 
 
 export const faildGetFilms = payload => ({
     type: GET_FILMS_FAILD,
