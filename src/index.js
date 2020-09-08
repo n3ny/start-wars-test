@@ -16,9 +16,9 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <AppRoute path={'/naves'} component={SpaceshipsList} />
-        <AppRoute path="/upsert" component={SpaceshipForm} /> 
-        <AppRoute path={'/'} component={FilmsList} />
+        <AppRoute path={'/naves'} component={SpaceshipsList} section={{id: '2', title:'Starships List'}} />
+        <AppRoute path="/upsert" component={SpaceshipForm} section={{id: '3',title:'Starship Edit Form'}}/> 
+        <AppRoute path={'/'} component={FilmsList} section={{id: '1',title:'Films List'}}/>
       </Switch>
     </BrowserRouter>
   </Provider>,

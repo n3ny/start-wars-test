@@ -1,8 +1,35 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { List } from 'antd';
+import { List, Table } from 'antd';
 import { getFilms } from '../../../redux/actions/Films';
 import { Link } from "react-router-dom";
+import { VideoCameraOutlined } from '@ant-design/icons';
+
+const columns = [
+    {
+        title: '',
+        dataIndex: '',
+        key: 'icon',
+        render: () => <VideoCameraOutlined />,
+    },
+    {
+        title: 'Film',
+        dataIndex: 'title',
+        key: 'film',
+    },
+    {
+        title: 'Action',
+        dataIndex: '',
+        key: 'x',
+        render: (item) => <Link to={{
+            pathname: '/naves',
+            state: {
+              data: item.starships
+            }
+          }}>Show starship
+      </Link>,
+    },
+];
 
 const FilmsList = () => {
     const dispatch = useDispatch();
@@ -10,32 +37,11 @@ const FilmsList = () => {
 
     useEffect(() => {
         if (data.length === 0)
-        dispatch(getFilms());
+            dispatch(getFilms());
     })
 
     return (
-        <List
-            itemLayout="horizontal"
-            dataSource={data}
-            renderItem={item => (
-                <List.Item
-                actions={[
-                <Link to={{
-                    pathname: '/naves',
-                    state: {
-                      data: item.starships
-                    }
-                  }}>Go
-              </Link>
-            ]}
-              >
-                    <List.Item.Meta
-                        title={<a href="https://ant.design">{item.title}</a>}
-                        description={item.opening_crawl}
-                    />
-                </List.Item>
-            )}
-        />
+        <Table dataSource={data} columns={columns} />
     )
 }
 
